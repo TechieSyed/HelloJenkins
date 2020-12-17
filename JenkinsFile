@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+       
+stage('restore') {
+  steps {
+    bat 'dotnet restore HelloJenkins.sln'
+  }
+}
+stage('build') {
+  steps {
+    bat 'dotnet build HelloJenkins.sln'
+  }
+}
+stage('Test') {
+  steps {
+    bat 'dotnet test HelloWorldTests/HelloWorldTests.csproj'
+  }
+}
+    }
+}
